@@ -26,7 +26,7 @@ if __name__ == "__main__":
     employee_id = int(sys.argv[1])
     employee_name, tasks_completed, total, todos_data = getdata(employee_id)
 
-    progress = "{:.2%}".format(tasks_completed/total)
+    progress = "{}/{}".format(tasks_completed,total)
 
     print("Employee {} is done with tasks({}):".format(employee_name, progress))
     for task in todos_data:
