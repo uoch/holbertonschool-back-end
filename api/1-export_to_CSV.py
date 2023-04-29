@@ -12,6 +12,15 @@ import sys
 import csv
 import importlib
 
+
+"""
+Using what you did in the task #0,
+extend your Python script
+to export data in the CSV format.
+"""
+
+
+
 module = importlib.import_module('0-gather_data_from_an_API')
 getdata = module.getdata
 
