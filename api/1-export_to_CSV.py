@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""Using what you did in the task #0, extend your Python script to export data in the CSV format.
+"""
+Using what you did in the task #0, extend your Python script to export data in the CSV format.
 """
 import requests
 import sys
@@ -16,17 +17,11 @@ print(todos_data)
 
 # Write data to CSV file
 with open(f'{employee_id}.csv', 'w') as f:
-    csv_writer = csv.writer(f,quoting=csv.QUOTE_MINIMAL, quotechar='"',delimiter=',')
+    csv_writer = csv.writer(f, quoting=csv.QUOTE_MINIMAL,
+                            quotechar='"', delimiter=',')
 
     # Write header row
     csv_writer.writerow(['id', 'name', 'completed', 'title'])
     for todo in todos_data:
-        csv_writer.writerow([str(employee_id), employe_name, str(todo['completed']), todo['title']])
-
-
-"""
-    # Write data rows
-    for todo in todos_data:
-        tasks_completed = todos_data['completed']
-        task_title = todos_data['title']
-        csv_writer.writerow([employee_id, employee_name, completed_status, task_title])"""
+        csv_writer.writerow([str(employee_id), employe_name,
+                            str(todo['completed']), todo['title']])
