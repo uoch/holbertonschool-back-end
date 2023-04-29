@@ -8,13 +8,15 @@ import requests
 import sys
 
 
+EMPLOYEE_API_URL = "https://jsonplaceholder.typicode.com/users"
+TODO_API_URL = "https://jsonplaceholder.typicode.com/todos"
+
+
 def getdata(employee_id):
-    data = requests.get(
-        "https://jsonplaceholder.typicode.com/users/{}".format(employee_id)).json()
+    data = requests.get(f"{EMPLOYEE_API_URL}/{employee_id}").json()
     employee_name = data["name"]
 
-    todos_data = requests.get(
-        f"https://jsonplaceholder.typicode.com/todos?userId={employee_id}").json()
+    todos_data = requests.get(f"{TODO_API_URL}?userId={employee_id}").json()
 
     total = len(todos_data)
     tasks_completed = len([task for task in todos_data if task["completed"]])
@@ -26,7 +28,7 @@ if __name__ == "__main__":
     employee_id = int(sys.argv[1])
     employee_name, tasks_completed, total, todos_data = getdata(employee_id)
 
-    progress = "{}/{}".format(tasks_completed,total)
+    progress = "{}/{}".format(tasks_completed, total)
 
     print("Employee {} is done with tasks({}):".format(employee_name, progress))
     for task in todos_data:
