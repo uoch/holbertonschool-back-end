@@ -1,3 +1,6 @@
+
+ 
+
 #!/usr/bin/python3
 """
 Using what you did in the task #0,
@@ -13,7 +16,7 @@ if __name__ == '__main__':
     import importlib
 
     module = importlib.import_module('0-gather_data_from_an_API')
-    getdata = module.getdata
+    getdata = module.getdata2
 
     employee_id = int(sys.argv[1])
     employe_name, tasks_completed, total, todos_data = getdata(employee_id)
