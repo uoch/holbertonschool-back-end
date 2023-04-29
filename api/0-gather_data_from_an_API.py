@@ -14,23 +14,23 @@ TODO_API_URL = "https://jsonplaceholder.typicode.com/todos"
 
 def getdata(employee_id):
     data = requests.get(f"{EMPLOYEE_API_URL}/{employee_id}").json()
-    employee_name = data["name"]
+    employe_name = data["name"]
 
     todos_data = requests.get(f"{TODO_API_URL}?userId={employee_id}").json()
 
     total = len(todos_data)
     tasks_completed = len([task for task in todos_data if task["completed"]])
 
-    return employee_name, tasks_completed, total, todos_data
+    return employe_name, tasks_completed, total, todos_data
 
 
 if __name__ == "__main__":
     employee_id = int(sys.argv[1])
-    employee_name, tasks_completed, total, todos_data = getdata(employee_id)
+    employe_name, tasks_completed, total, todos_data = getdata(employee_id)
 
     progress = "{}/{}".format(tasks_completed, total)
 
-    print("Employee {} is done with tasks({}):".format(employee_name, progress))
+    print("Employee {} is done with tasks({}):".format(employe_name, progress))
     for task in todos_data:
         if task["completed"]:
             print(f"\t{task['title']}")
