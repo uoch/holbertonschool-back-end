@@ -12,12 +12,9 @@ import importlib
 module = importlib.import_module('0-gather_data_from_an_API')
 getdata = module.getdata
 
-# Retrieve employee data
 employee_id = int(sys.argv[1])
 employe_name, tasks_completed, total, todos_data = getdata(employee_id)
-print(todos_data)
 
-# Write data to CSV file
 with open(f'{employee_id}.csv', 'w') as f:
     csv_writer = csv.writer(f, quoting=csv.QUOTE_MINIMAL,
                             quotechar='"', delimiter=',')
