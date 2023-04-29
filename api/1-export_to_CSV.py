@@ -1,6 +1,3 @@
-
- 
-
 #!/usr/bin/python3
 """
 Using what you did in the task #0,
@@ -9,12 +6,15 @@ to export data in the CSV format.
 """
 
 
+def printf(a):
+    return [f"'{elem}'" for elem in a]
+
+
 if __name__ == '__main__':
     import requests
     import sys
     import csv
     import importlib
-
     module = importlib.import_module('0-gather_data_from_an_API')
     getdata = module.getdata2
 
@@ -22,8 +22,8 @@ if __name__ == '__main__':
     employe_name, tasks_completed, total, todos_data = getdata(employee_id)
 
     with open(f'{employee_id}.csv', 'w') as f:
-        csv_writer = csv.writer(f, quoting=csv.QUOTE_MINIMAL,
-                                quotechar='"', delimiter=',')
+        csv_writer = csv.writer(f,
+                                delimiter=',')
         for todo in todos_data:
-            csv_writer.writerow([str(employee_id), employe_name,
-                                 str(todo['completed']), todo['title']])
+            csv_writer.writerow(printf([employee_id, employe_name,
+                                        todo['completed'], todo['title']]))
