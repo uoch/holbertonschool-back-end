@@ -21,9 +21,6 @@ if __name__ == '__main__':
     with open(f'{employee_id}.csv', 'w') as f:
         csv_writer = csv.writer(f, quoting=csv.QUOTE_MINIMAL,
                                 quotechar='"', delimiter=',')
-
-        # Write header row
-        csv_writer.writerow(['id', 'name', 'completed', 'title'])
         for todo in todos_data:
             csv_writer.writerow([str(employee_id), employe_name,
                                  str(todo['completed']), todo['title']])
