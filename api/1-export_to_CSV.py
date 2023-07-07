@@ -1,31 +1,20 @@
 #!/usr/bin/python3
-"""
-Using what you did in the task #0, extend your
-Python script to export data in the CSV format.
-"""
-
+"""Gathering the needed informations from the API."""
+import csv
+import json
+import requests
+from sys import argv
 
 if __name__ == '__main__':
-    import csv
-    import requests
-    import sys
+    resp_users = requests.get('https://jsonplaceholder.typicode.com/users')
+    resp_todos = requests.get('https://jsonplaceholder.typicode.com/todos/')
 
-    t = sys.argv[1]
-    response = requests.get(
-        'https://jsonplaceholder.typicode.com/users/' + t)
-    todos = requests.get(
-        'https://jsonplaceholder.typicode.com/todos?userId=' + t)
-
-    employee = response.json()
-    todos = todos.json()
-    id = employee['id']
-    name = employee['username']
-
-    with open(f'{t}.csv', 'w') as file:
-        for i in todos:
-            Ta = i['completed']
-            TASK_TITLE = i['title']
-            TASK_COMPLETED_STATUS = i['completed']
-            TASK_TITLE = i['title']
-            file.write(
-                f"\"{id}\",\"{name}\",\"{Ta}\",\"{TASK_TITLE}\"\n")
+    for i in resp_users.json():
+        if i['id'] == int(argv[1]):
+            emp = i['username']
+    with open(f'{argv[1]}.csv', 'w') as f:
+        for i in resp_todos.json():
+            if i['userId'] == int(argv[1]):
+                c = i['completed']
+                t = i['title']
+                f.write(f"\"{argv[1]}\",\"{emp}\",\"{c}\",\"{t}\"\n")
