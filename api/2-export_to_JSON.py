@@ -11,7 +11,7 @@ if __name__ == '__main__':
     import csv
     import importlib
     import json
-    from funct import getdata3,printf
+    from funct import getdata3, printf
     module = importlib.import_module('funct')
     getdata = module.getdata3
 
@@ -25,7 +25,6 @@ if __name__ == '__main__':
             'username': username
         }
         tasks.append(task)
-    final_dic = {employee_id:tasks}
+    final_dic = {employee_id: tasks}
     with open(f'{employee_id}.json', 'w') as f:
         json.dump(final_dic, f)
-       
