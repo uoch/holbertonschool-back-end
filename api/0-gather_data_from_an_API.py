@@ -28,4 +28,3 @@ if __name__ == "__main__":
     for TASK_TITLE in todos_data:
         if TASK_TITLE["completed"] is True:
             print(f"\t {TASK_TITLE['title']}")
-
