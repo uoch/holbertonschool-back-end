@@ -4,22 +4,27 @@ Using what you did in the task #0,
 extend your Python script
 to export data in the CSV format.
 """
-from funct import getdata2,printf
-
 if __name__ == '__main__':
+    import csv
     import requests
     import sys
-    import csv
-    import importlib
-    module = importlib.import_module('funct')
-    getdata = module.getdata2
 
-    employee_id = int(sys.argv[1])
-    employe_name, tasks_completed, total, todos_data = getdata(employee_id)
+    num = sys.argv[1]
+    response = requests.get(
+        'https://jsonplaceholder.typicode.com/users/' + num)
+    todos = requests.get(
+        'https://jsonplaceholder.typicode.com/todos?userId=' + num)
 
-    with open(f'{employee_id}.csv', 'w') as f:
-        csv_writer = csv.writer(f,
-                                delimiter=',')
-        for todo in todos_data:
-            csv_writer.writerow(printf([employee_id, employe_name,
-                                        todo['completed'], todo['title']]))
+    employee = response.json()
+    todos = todos.json()
+    id = employee['id']
+    name = employee['username']
+
+    with open(f'{num}.csv', 'w') as file:
+        for i in todos:
+            Task = i['completed']
+            TASK_TITLE = i['title']
+            TASK_COMPLETED_STATUS = i['completed']
+            TASK_TITLE = i['title']
+            file.write(
+                f"\"{id}\",\"{name}\",\"{Task}\",\"{TASK_TITLE}\"\n")
