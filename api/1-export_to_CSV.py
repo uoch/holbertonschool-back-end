@@ -22,9 +22,9 @@ if __name__ == '__main__':
 
     with open(f'{num}.csv', 'w') as file:
         for i in todos:
-            Task = i['completed']
+            Ta = i['completed']
             TASK_TITLE = i['title']
             TASK_COMPLETED_STATUS = i['completed']
             TASK_TITLE = i['title']
             file.write(
-                f"\"{id}\",\"{name}\",\"{Task}\",\"{TASK_TITLE}\"\n")
+                f"\"{id}\",\"{name}\",\"{Ta}\",\"{TASK_TITLE}\"\n")
