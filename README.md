@@ -1,2 +1,0 @@
-# holbertonschool-back-end
-API

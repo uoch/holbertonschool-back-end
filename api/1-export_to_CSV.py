@@ -4,18 +4,14 @@ Using what you did in the task #0,
 extend your Python script
 to export data in the CSV format.
 """
-
-
-def printf(a):
-    return [f"'{elem}'" for elem in a]
-
+from funct import getdata2,printf
 
 if __name__ == '__main__':
     import requests
     import sys
     import csv
     import importlib
-    module = importlib.import_module('0-gather_data_from_an_API')
+    module = importlib.import_module('funct')
     getdata = module.getdata2
 
     employee_id = int(sys.argv[1])
